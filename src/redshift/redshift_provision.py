@@ -86,7 +86,7 @@ class RedshiftCluster(str):
         try:
             response = client.describe_clusters(
                 ClusterIdentifier=self.clusterid)
-            if response <> None:
+            if response != None:
                 ClusterHostName =  response['Clusters'][0]['Endpoint']['Address']
                 logger.info("Cluster " + self.clusterid + " has hostname: " + ClusterHostName)
                 return ClusterHostName
@@ -198,8 +198,7 @@ class RedshiftCluster(str):
     #TODO: need handling for OldDevClusterCount.  This was originally in the get_cluster_containing logic.
     #TODO: Should wait for open sessions/queries to complete before deleting?  Also wait delay before CNAME flip, CNAME has 300 second TTL
     #TODO: Need to check for resizing completion.  Throws an error if resize is not complete.  Deleting old cluster: floactionmcm-dev-2017-3-19-0-16
-
-		client = boto3.client('redshift')
+        client = boto3.client('redshift')
       
         logger.info("Starting old cluster deletion.")
         #TODO need debugging here to see what self.clusterid contains
